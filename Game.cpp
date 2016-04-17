@@ -34,20 +34,6 @@ namespace Gaming {
             populate();
     }
 
-    Game::Game(const Game &another) : __width(another.__width), __height(another.__height), __round(another.__round), __status(another.__status) {
-        //TODO: Define cpy ctor
-        //for(unsigned i = 0; i < __height; i++) {
-        //for(unsigned j = 0; j < __width; j++) {
-        //if(dynamic_cast<Simple *>(another.__grid[(i*__width) + j]) != nullptr)
-        //addSimple(Position(i,j), dynamic_cast<Simple *>(another.__grid[(i*__width) + j])->getEnergy());
-        //else if(dynamic_cast<Strategic *>(another.__grid[(i*__width) + j]) != nullptr);
-        //__grid[(i*__width) + j] = new Strategic(*this,Position(i,j),
-        //dynamic_cast<Strategic *>(another.__grid[(i*__width) + j])->getEnergy(),
-        //dynamic_cast<Strategic *>(another.__grid[(i*__width) + j])->get);
-        //}
-        //}
-    }
-
     Game::~Game() {
         for (Piece *p : __grid) {
             if (p != nullptr) {
@@ -415,7 +401,8 @@ namespace Gaming {
         do {
             if((getNumPieces() == 0) || (getNumResources() == 0))//(getNumPieces() == 1 && getNumAgents() == 1) || (getNumStrategic() == 0 && getNumResources() == 0))
                 __status = Status::OVER;
-            std::cout << *this << std::endl;
+            if(verbose)
+                std::cout << *this << std::endl;
             round();
             __round++;
         } while (__status != Status::OVER);
