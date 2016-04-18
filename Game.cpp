@@ -385,7 +385,7 @@ namespace Gaming {
                         delete __grid[i];
                         __grid[i] = nullptr;
                     }
-                } if(__grid[i] == nullptr){
+                } if(__grid[i] != nullptr){
                     if(dynamic_cast<Resource *>(p)) {
                         if(dynamic_cast<Resource *>(p)->getCapacity() <= 0) {
                             delete __grid[i];
